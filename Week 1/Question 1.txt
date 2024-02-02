@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+// Function to perform linear search and return the index if found, -1 otherwise
+int linearSearch(int arr[], int n, int key, int *comparisons) {
+    for (int i = 0; i < n; i++) {
+        (*comparisons)++;  // Increment the comparison count
+        if (arr[i] == key) {
+            return i;  // Key found, return the index
+        }
+    }
+    return -1;  // Key not found
+}
+
+int main() {
+    int n, key,kl;
+    
+    printf("Enter the Input Times: ");
+    scanf("%d", &kl);
+    for(int tt=0;tt<kl;tt++)
+    {   
+        // Input size of the array
+        printf("Enter the size of the array: ");
+        scanf("%d", &n);
+    
+        int arr[n];
+    
+        // Input array elements
+        printf("Enter the elements of the array:\n");
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &arr[i]);
+        }
+    
+        // Input key to search
+        printf("Enter the key element to search: ");
+        scanf("%d", &key);
+    
+        int comparisons = 0;  // Variable to store the number of comparisons
+    
+        // Perform linear search
+        int result = linearSearch(arr, n, key, &comparisons);
+    
+        // Output the result
+        if (result != -1) {
+            printf("Element %d found at index %d\n", key, result);
+        } else {
+            printf("Element %d not found in the array\n", key);
+        }
+    
+        // Output the number of comparisons
+        printf("Number of comparisons: %d\n", comparisons);
+    
+    }
+}
