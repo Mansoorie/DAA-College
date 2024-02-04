@@ -1,0 +1,46 @@
+#include <iostream>
+
+int binarySearch(int arr[], int low, int high, int key, int& comparisons) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        comparisons++;
+
+        if (arr[mid] == key)
+            return mid;
+        else if (arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return -1; // Key not found
+}
+
+int main() {
+    int n;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> n;
+
+    int arr[n];
+    std::cout << "Enter the sorted array elements:\n";
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+
+    int key;
+    std::cout << "Enter the key element to search: ";
+    std::cin >> key;
+
+    int comparisons = 0;
+    int result = binarySearch(arr, 0, n - 1, key, comparisons);
+
+    if (result != -1) {
+        std::cout << "Element " << key << " found at index " << result << ".\n";
+    } else {
+        std::cout << "Element " << key << " not found in the array.\n";
+    }
+
+    std::cout << "Total number of comparisons: " << comparisons << "\n";
+
+    return 0;
+}
