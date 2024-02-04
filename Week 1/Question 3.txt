@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+int search(int arr[], int l, int o,int key) 
+{
+    for(int i=o;i<=l;i++)
+    {
+        if(arr[i]==key)
+        {
+            cout<<"\nELEMNT FOUNDED "<<arr[i];
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() 
+{
+    int testcase;
+    cout << "Enter the number of testcases: ";
+    cin >> testcase;
+    for(int y=0;y<testcase;y++)
+    {
+        int n;
+        cout << "\nEnter the size of the array: ";
+        cin >> n;
+    
+        int arr[n];
+        cout << "Enter the sorted array elements:\n";
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+    
+        int key;
+        cout << "Enter the key element to search: ";
+        cin >> key;
+        int j;
+        int i=1;
+        while(arr[i]<key && i<=n)
+        {
+            j=i;
+            i=i*2;
+        }
+        
+        int l=search(arr,min(i,n),j,key);
+        if(l==1)
+        {
+            cout<<"\nELEMNT NOT FOUND";
+        }
+    }
+}
